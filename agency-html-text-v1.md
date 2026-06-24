@@ -8,7 +8,7 @@
 | **Domain** | agency.computer (the recipe catalog is the consumer's; the protocol carries the id opaquely) |
 | **Reference implementation** | [`reference/projection.ts`](./reference/projection.ts) (`projectHtmlText`) |
 | **Conformance vectors** | [`agency-html-text-v1.json`](./agency-html-text-v1.json) |
-| **Protocol** | the `projection` slot of `@motebit/protocol` `EvidenceProvenance` ([motebit](https://github.com/motebit/motebit); verifiable-locality co-design, 2026-06) |
+| **Protocol** | the `projection` slot of `EvidenceProvenance` in [`evidence-provenance-v1`](https://github.com/motebit/motebit/blob/main/spec/evidence-provenance-v1.md) (motebit; verifiable-locality co-design, 2026-06) — this recipe is that spec's §7 byte-determinism conformance exemplar |
 
 ## 1. Purpose
 
@@ -109,6 +109,12 @@ normalization, no case folding. The fixture intentionally includes:
 A divergence on any case is a spec or implementation defect, never a tolerance to
 widen. [`reference/conformance.ts`](./reference/conformance.ts) runs this procedure
 against the reference implementation on every push.
+
+This satisfies [`evidence-provenance-v1` §7](https://github.com/motebit/motebit/blob/main/spec/evidence-provenance-v1.md)
+(the byte-determinism conformance requirement): a projection recipe is a real protocol
+artifact only when reproduced byte-for-byte by **two independent implementations**
+against a committed fixture. The two named here are this repo's reference implementation
+and motebit's independent conformance test — both checked against this fixture.
 
 ## 5. Versioning — the id is immutable
 

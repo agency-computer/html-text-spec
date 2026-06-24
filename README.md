@@ -7,15 +7,24 @@ fixture, and a reference implementation.
 
 agency.computer produces signed evidence whose claims are **verbatim spans of a
 primary document** (e.g. an SEC filing). The [motebit evidence-provenance
-protocol](https://github.com/motebit/motebit) re-verifies such a claim by re-applying
-a named projection recipe over the raw document bytes and confirming the span is an
-exact substring of the result — so **anyone** can re-fetch the raw filing, re-apply
-this recipe, and check the evidence, with no trust in agency's index.
+protocol](https://github.com/motebit/motebit/blob/main/spec/evidence-provenance-v1.md)
+(`evidence-provenance-v1`) re-verifies such a claim by re-applying a named projection
+recipe over the raw document bytes and confirming the span is an exact substring of the
+result — so **anyone** can re-fetch the raw filing, re-apply this recipe, and check the
+evidence, with no trust in agency's index.
 
 That property only holds if the recipe is **byte-deterministic**: an independent
 implementation, built only from the spec, must produce the byte-identical output for
 the same input. This repo is that spec, published so it can be reimplemented, checked,
 and pinned.
+
+`agency.html-text.v1` is the worked exemplar named in the protocol's byte-determinism
+conformance requirement
+([evidence-provenance-v1 §7](https://github.com/motebit/motebit/blob/main/spec/evidence-provenance-v1.md)):
+a projection recipe is a real protocol artifact only if it is world-public,
+content-addressed, immutable under its id, and reproduced byte-for-byte by **two
+independent implementations** against a committed fixture — this repo's reference
+implementation and motebit's independent conformance test being the two.
 
 ## Contents
 

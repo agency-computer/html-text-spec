@@ -1,0 +1,15 @@
+name: conformance
+on: [push, pull_request]
+
+# The reference implementation must reproduce every fixture vector byte-for-byte.
+# A failure here means the spec, the fixture, and the reference impl have diverged —
+# which would silently break independent re-verification of agency evidence.
+jobs:
+  byte-identity:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - run: npx -y tsx reference/conformance.ts

@@ -1,0 +1,14 @@
+{
+  "name": "agency-html-text-spec",
+  "version": "1.0.0",
+  "description": "agency.html-text.v1 — a byte-deterministic HTML→text projection recipe (spec + conformance fixture + reference implementation)",
+  "type": "module",
+  "scripts": {
+    "test": "tsx reference/conformance.ts"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/agency-computer/html-text-spec.git"
+  }
+}
